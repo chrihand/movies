@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import AllMovies from '../components/AllMovies';
 import AddMovie from '../components/AddMovie';
-import { fetchAllMovies } from '../actions/index'
+import SearchMovies from '../components/SearchMovies';
+import AllMovies from '../components/AllMovies';
+
+import { fetchAllMovies, addChangeSearch } from '../actions/index'
 
 
 class MoviesContainer extends Component {
@@ -13,6 +15,7 @@ class MoviesContainer extends Component {
     return (
       <div className="Content">
         <AddMovie />
+        <SearchMovies searchForChange={this.props.changeSearch}/>
         <AllMovies movies={this.props.movies}/>
       </div>
     );
@@ -20,8 +23,14 @@ class MoviesContainer extends Component {
 };
 
 const mapStateToProps = state => {
-  let { movie: { moviesList }} = state;
-  console.log(moviesList);
+  let { movie: { moviesList, activeSearchForFilters }} = state;
+
+  const hasSearchFilter = activeSearchForFilters.length > 0;
+  const searchFilter = activeSearchForFilters.toUpperCase();
+
+  moviesList = hasSearchFilter
+    ? moviesList.filter(movie => (movie.name.toUpperCase().includes(searchFilter)))
+    : moviesList;
 
   return {
       movies: moviesList
@@ -31,6 +40,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchMovies: () => dispatch(fetchAllMovies()),
+    changeSearch: (searchFilter) => dispatch(addChangeSearch(searchFilter)),
   };
 };
 
