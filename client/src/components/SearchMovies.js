@@ -21,7 +21,7 @@ class Search extends Component {
     return (
       <div>
         <h3>Søk i databasen</h3>
-        <input type="text" name="search" value={this.state.resultSearch} onChange={this.handleSearchChange} placeholder="Søk på filmer på tittel..."/>
+        <input type="text" name="search" value={this.state.resultSearch} onChange={this.handleSearchChange} placeholder="Søk på filmer på id eller tittel..."/>
       </div>
     )
   };

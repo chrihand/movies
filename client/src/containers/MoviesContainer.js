@@ -29,7 +29,7 @@ const mapStateToProps = state => {
   const searchFilter = activeSearchForFilters.toUpperCase();
 
   moviesList = hasSearchFilter
-    ? moviesList.filter(movie => (movie.name.toUpperCase().includes(searchFilter)))
+    ? moviesList.filter(movie => (movie.name.toUpperCase().includes(searchFilter) || movie.movieID.toString().includes(searchFilter)))
     : moviesList;
 
   return {
