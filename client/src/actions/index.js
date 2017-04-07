@@ -16,13 +16,10 @@ export function addChangeSearch(searchFilter) {
     };
 };
 
-export function addMovie(id, name, genre, movieType) {
+export function addMovie(newMovie) {
   return {
     type: ADD_MOVIE,
-    id: id,
-    name: name,
-    genre: genre,
-    movieType: movieType
+    newMovie,
   };
 };
 
@@ -36,4 +33,24 @@ export function fetchAllMovies() {
           dispatch(fetchedAllMovies(data));
         });
   };
-}
+};
+
+export function addOneMovie(newMovie) {
+  console.log(newMovie)
+  return dispatch => {
+    fetch('http://localhost:8080/api/movie/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newMovie)
+    }).then((response) => {
+      return response.status
+    })
+    .then((data) => {
+      if (data === 200) {
+        dispatch(addMovie(newMovie));
+        dispatch(fetchAllMovies());
+      }
+    })
+}}

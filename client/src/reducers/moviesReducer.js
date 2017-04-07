@@ -3,6 +3,8 @@ import * as actionTypes from '../actions';
 const initialState = {
   moviesList: [],
   activeSearchForFilters: '',
+  id: '',
+  movie: {},
 
 }
 
@@ -18,6 +20,12 @@ export default function moviesReducer(state=initialState, action) {
         ...state,
         activeSearchForFilters: action.searchFilter,
       };
+    case actionTypes.ADD_MOVIE:
+      return {
+        ...state,
+        id: action.newMovie.movieID,
+        movie: action.newMovie
+      }
     default:
       return state
   }

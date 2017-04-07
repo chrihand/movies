@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class AddMovie extends Component {
+class AddMovie extends Component {
   constructor(props) {
     super(props);
     this.APIurl = 'http://localhost:8080/api';
@@ -11,69 +11,51 @@ export default class AddMovie extends Component {
       inputGenre: "",
       inputType: ""
     };
-
-    this.handleIdChange = this.handleIdChange.bind(this);
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleGenreChange = this.handleGenreChange.bind(this);
-    this.handleTypeChange = this.handleTypeChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
-  handleIdChange(event) {
+  handleIdChange = (event) => {
     this.setState ({
       inputId: event.target.value
     });
   };
 
-  handleNameChange(event) {
+  handleNameChange = (event) => {
     this.setState ({
       inputName: event.target.value
     });
   };
 
-  handleGenreChange(event) {
+  handleGenreChange = (event) => {
     this.setState ({
       inputGenre: event.target.value
     });
   };
 
-  handleTypeChange(event) {
+  handleTypeChange = (event) => {
     this.setState ({
       inputType: event.target.value
     });
   };
 
-  handleSubmit(event) {
-    console.log("Button ")
+  handleSubmit = (event) => {
     let newMovie = {
       movieID: this.state.inputId,
       name: this.state.inputName,
       genre: this.state.inputGenre,
       type: this.state.inputType
     }
-    console.log(newMovie)
-    fetch(this.APIurl + '/movie/add', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newMovie)
-    }).then((response) => {
-        //console.log(newMovie)
-        return response.status
-      })
-      .then((data) => {
-        if (data === 200) {
-          //this.getAllMovies(); // Update display of all posts, with the new
-          this.setState(Object.assign({}, this.state, {inputId: "", inputName: "", inputGenre: "", inputType: ""})) // Sets the state of input fields to be empty, so you can write a new post.
-        }
-      })
+    this.props.addNewMovie(newMovie);
+    this.setState ({
+      inputId: "",
+      inputName: "",
+      inputGenre: "",
+      inputType: ""
+    })
   }
 
   render() {
     return(
         <div>
-
           <label> Id: <input type="text" name="id" value={this.state.inputId} onChange={this.handleIdChange}/> </label>
           <label> Navn: <input type="text" name="name" value={this.state.inputName} onChange={this.handleNameChange}/> </label>
           <label> Genre: <input type="text" name="genre" value={this.state.inputGenre} onChange={this.handleGenreChange}/> </label>
@@ -92,3 +74,9 @@ export default class AddMovie extends Component {
     )
   }
 }
+
+AddMovie.propTypes = {
+  addNewMovie: React.PropTypes.func.isRequired,
+}
+
+export default AddMovie;

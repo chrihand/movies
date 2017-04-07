@@ -2,17 +2,136 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: rgb(244, 244, 244);
 }
 
-.Content{
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+/* Styling for navbar */
+.NavbarContainer {
+  display: flex;
+  background-color: #2d2d2d;
+  color: white;
+  height: 80px;
+}
+
+.NavbarItem {
+  margin: 0;
+  padding: 10px 10px;
+  font-size: 35pt;
+}
+
+.Logo{
+  width: 80px;
+}
+
+/* Styling for content */
+.Content {
+  margin: 50px auto;
+}
+
+/* Styling for add new movie button and modal */
+.ModalOpen {
+  font-size: 35pt;
+  color: white;
+  border: 1px solid black;
+  border-radius: 100px;
+  width: 70px;
+  height: 70px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.Tooltip {
+  visibility: hidden;
+  font-size: 15px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  width: 140px;
+  position: fixed;
+  bottom: 50px;
+  right: 110px;
+  margin-left: -60px;
+}
+
+.ButtonContainer:hover .Tooltip {
+  visibility: visible;
+}
+
+.Tooltip:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent black;
+}
+
+.ModalAddMovie {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.ModalContent {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.ModalClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.ModalClose:hover,
+.ModalClose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Styling for displaying all movies */
+.AllMoviesContainer {
+  display: flex;
 
 }
 
+.MovieCardContainer {
+  width: 200px;
+  height: 250px;
+  padding: 5px;
+  margin-right: 30px;
+  border: 1px solid #2d2d2d;
+}
 
+.MovieItem{
+  margin: 50px auto;
+  border: 1px solid rgb(244, 244, 244);
+  -webkit-box-shadow: 1px 29px 56px 8px rgba(173,168,164,0.44);
+  -moz-box-shadow: 1px 29px 56px 8px rgba(173,168,164,0.44);
+  box-shadow: 1px 29px 56px 8px rgba(173,168,164,0.44);
+}
+
+
+
+/* Media queries for different page widths */
 @media (min-width: 768px) {
   .Content {
     width: 750px;
