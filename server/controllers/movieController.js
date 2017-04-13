@@ -5,8 +5,8 @@ const ourMovies = require("../models/ourMovies"); //import the exported Model
 exports.addMovie = function(req, res, next) {
  const addMovie = req.body; // extract from the request body the key-value pairs
  // Check that all needed information is present and valid:
- console.log("Hit")
- console.log(addMovie.name);
+ //console.log("Hit")
+ //console.log(addMovie.name);
 
  if(addMovie.name == '' || addMovie.genre == '' || addMovie.type == ''){
    return res.status(422).send({ error: 'Did you spessify name, genre and type?' });
@@ -14,9 +14,8 @@ exports.addMovie = function(req, res, next) {
  // If validation is passed, create a new postit:
  const movie = new ourMovies({
    movieID: addMovie.movieID,
-   name: addMovie.name,
-   genre: addMovie.genre.split(","), //create a list of the category keywords, split category on ','
-   type: addMovie.type
+   type: addMovie.type,
+   movieInfo: addMovie.movieInfo
  });
  // Try and save to database
  movie.save(function(err, addMovie){
@@ -50,7 +49,7 @@ exports.findMovie = function(req, res, next) {
       return res.status(422).send({error: "Something went wrong, Error: " + err});
     }
 
-    console.log("doc : " + doc);
+    //console.log("doc : " + doc);
     if (doc == null) {
       return res.status(200).send({message: "Could not find a movie with that title."});
     }

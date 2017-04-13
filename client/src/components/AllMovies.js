@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import '../../assets/style/AllMovies.css';
 import MovieCard from './MovieCard';
 
 class AllMovies extends Component {

@@ -11,9 +11,9 @@ export function fetchedAllMovies(movies) {
 
 export function addChangeSearch(searchFilter) {
   return {
-        type: ADD_SEARCH_FOR_FILTER,
-        searchFilter,
-    };
+    type: ADD_SEARCH_FOR_FILTER,
+    searchFilter,
+  };
 };
 
 export function addMovie(newMovie) {
@@ -28,10 +28,10 @@ export function fetchAllMovies() {
     fetch('http://localhost:8080/api/movie/all', {
       method: 'GET',
     }).then((response) => {
-        return response.json();
-      }).then((data) => {
-          dispatch(fetchedAllMovies(data));
-        });
+      return response.json();
+    }).then((data) => {
+      dispatch(fetchedAllMovies(data));
+    });
   };
 };
 
@@ -53,4 +53,5 @@ export function addOneMovie(newMovie) {
         dispatch(fetchAllMovies());
       }
     })
-}}
+  }
+};

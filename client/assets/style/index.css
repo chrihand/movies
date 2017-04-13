@@ -1,0 +1,39 @@
+/*
+Button color: #ffc630(light) && #ffbf1f(dark)
+Background color: #f4f4f4
+Navbar color: #2d2d2d
+ */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #f4f4f4;
+  font-family: 'Quicksand', sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+/* Styling for content */
+.Content {
+  margin: 50px auto;
+}
+
+/* Media queries for different page widths */
+@media (min-width: 768px) {
+  .Content {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .Content {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .Content {
+    width: 1170px;
+  }
+}

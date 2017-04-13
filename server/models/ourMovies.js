@@ -4,9 +4,8 @@ const mongoose = require('mongoose'),
 const MoviesSchema = new Schema({
   // Dont have to write "id" because MongoDB inserts this by itself as "_id"
   movieID: String,
-  name: String,
-  genre: Array,
-  type: String
+  type: String,
+  movieInfo: Object
 });
 
 // export the Schema so that it can be used by other modules/codes

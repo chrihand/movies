@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import '../../assets/style/SearchMovie.css';
+
 class Search extends Component {
 
   constructor(props) {
@@ -19,13 +21,14 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Søk i databasen</h3>
-        <input type="text" name="search" value={this.state.resultSearch} onChange={this.handleSearchChange} placeholder="Søk på filmer på id eller tittel..."/>
+      <div className="SearchMoviesContainer">
+        <input  className="SearchMovies" type="text" name="search" value={this.state.resultSearch} onChange={this.handleSearchChange} placeholder="Søk..."/>
+        <span className="SearchMoviesTooltip">Søk på en film med id eller tittel</span>
       </div>
     )
   };
 };
+
 Search.propTypes = {
 	searchForChange: React.PropTypes.func.isRequired,
 };

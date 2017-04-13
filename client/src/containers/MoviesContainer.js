@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AddMovie from '../components/AddMovie';
-import SearchMovies from '../components/SearchMovies';
 import AllMovies from '../components/AllMovies';
 import Navbar from '../components/Navbar';
 
@@ -12,24 +11,14 @@ class MoviesContainer extends Component {
 
 
   render() {
-
-
     return (
       <div>
-        <Navbar />
+        <Navbar searchForChange={this.props.changeSearch} />
         <div className="Content">
-          <SearchMovies
-            searchForChange={this.props.changeSearch}
-          />
-          <AllMovies
-            movies={this.props.movies}
-          />
+          <AllMovies movies={this.props.movies} />
         </div>
-        <AddMovie addNewMovie={this.props.addNewMovie}/>
-        </div>
-
-
-
+        <AddMovie addNewMovie={this.props.addNewMovie} />
+      </div>
     );
   };
 };
@@ -41,7 +30,7 @@ const mapStateToProps = state => {
   const searchFilter = activeSearchForFilters.toUpperCase();
 
   moviesList = hasSearchFilter
-    ? moviesList.filter(movie => (movie.name.toUpperCase().includes(searchFilter) || movie.movieID.toString().includes(searchFilter)))
+    ? moviesList.filter(movie => (movie.movieInfo.original_title.toUpperCase().includes(searchFilter) || movie.movieID.toString().includes(searchFilter)))
     : moviesList;
 
   return {
