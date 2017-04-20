@@ -6,10 +6,11 @@ import configureStore from "./configureStore";
 import '../assets/style/index.css';
 import MoviesContainer from './containers/MoviesContainer';
 
-import { fetchAllMovies } from './actions/index';
+import { fetchAllMovies, fetchGenres } from './actions/index';
 
 const store = configureStore();
 store.dispatch(fetchAllMovies());
+store.dispatch(fetchGenres());
 
 ReactDOM.render(
   <Provider store={store}>

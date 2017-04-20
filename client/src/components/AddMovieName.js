@@ -30,11 +30,9 @@ class AddMovieName extends Component {
 
     this._inputBounce = setTimeout(function() {
       const query = self.state.inputName;
-      //console.log('Search for:', query)
       fetch('https://api.themoviedb.org/3/search/movie?api_key=' + APIKey + '&query=' + query)
       .then(response => response.json())
       .then(data => {
-        //console.log(data.results)
         self.setState ( {
           searchList: data.results
         })

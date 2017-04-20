@@ -63,9 +63,9 @@ class AddMovieInfo extends Component {
               <select className="AddMovieSelectItem" id="type" value={this.state.inputType} onChange={this.handleTypeChange}>
                 <option value="--"></option>
                 <option value="DVD">DVD</option>
-                <option value="Blue-ray">Blue-ray</option>
-                <option value="Norsk Itunes">Norsk Itunes</option>
-                <option value="Amerikansk Itunes">Amerikansk Itunes</option>
+                <option value="Blu-Ray">Blu-Ray</option>
+                <option value="Norsk iTunes">Norsk iTunes</option>
+                <option value="Amerikansk iTunes">Amerikansk iTunes</option>
               </select>
             </div>
           </div>
@@ -81,7 +81,6 @@ class AddMovieInfo extends Component {
 
 AddMovieInfo.propTypes = {
   addNewMovie: React.PropTypes.func.isRequired,
-
 };
 
 export default AddMovieInfo;

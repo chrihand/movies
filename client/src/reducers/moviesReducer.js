@@ -5,7 +5,9 @@ const initialState = {
   activeSearchForFilters: '',
   id: '',
   movie: {},
-
+  genres: [],
+  activeGenreFilter: [],
+  activeTypeFilter: [],
 }
 
 export default function moviesReducer(state=initialState, action) {
@@ -25,7 +27,22 @@ export default function moviesReducer(state=initialState, action) {
         ...state,
         id: action.newMovie.movieID,
         movie: action.newMovie
-      }
+      };
+    case actionTypes.ADD_GENRE:
+      return {
+        ...state,
+        genres: action.genres,
+      };
+    case actionTypes.ACTIVE_GENRE:
+      return {
+        ...state,
+        activeGenreFilter: action.activeGenreFilters
+      };
+      case actionTypes.ACTIVE_TYPE:
+        return {
+          ...state,
+          activeTypeFilter: action.activeTypeFilters
+        };
     default:
       return state
   }

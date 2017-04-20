@@ -1,0 +1,17 @@
+.FilterContainer {
+  position: fixed;
+  top: 100px;
+  left: 30px;
+}
+
+.FilterContainer h3 {
+  cursor: pointer;
+}
+
+.FilterGenreTooltip {
+
+}
+
+.FilterTypeTooltip {
+  
+}

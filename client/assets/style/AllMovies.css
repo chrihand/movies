@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin-top: 100px;
 }
 
 .MovieCardContainer {
@@ -10,16 +11,16 @@
   padding: 5px;
   margin: 15px;
   border: 1px solid rgb(244, 244, 244);
-  -webkit-box-shadow: 1px 29px 30px 8px rgba(173,168,164,0.44);
-  -moz-box-shadow: 1px 29px 30px 8px rgba(173,168,164,0.44);
-  box-shadow: 1px 29px 30px 8px rgba(173,168,164,0.44);
+  -webkit-box-shadow: 1px 1px 10px 1px rgba(173,168,164,0.44);
+  -moz-box-shadow: 1px 1px 10px 1px rgba(173,168,164,0.44);
+  box-shadow: 1px 1px 10px 1px rgba(173,168,164,0.44);
 }
 
 .MovieCardContainer:hover {
   cursor: pointer;
-  -webkit-box-shadow: 1px 5px 30px 8px #2d2d2d;
-  -moz-box-shadow: 1px 5px 30px 8px #2d2d2d;
-  box-shadow: 1px 5px 30px 8px #2d2d2d;
+  -webkit-box-shadow: 1px 1px 10px 1px rgba(42,42,42,0.44);
+  -moz-box-shadow: 1px 1px 10px 1px rgba(42,42,42,0.44);
+  box-shadow: 1px 1px 10px 1px rgba(42,42,42,0.44);
 }
 
 .MovieCardPosterInformation {
