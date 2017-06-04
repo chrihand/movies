@@ -70,10 +70,11 @@ class FilterMovies extends Component {
     if (this.state.showGenre) {
       if (this.props.genres) {
         checkboxGenres = genres.map(genre =>
-          <div key={genre.name + genre.id}>
-          <input type="checkbox" name="genre" value={genre.id} key={genre.id} onClick={this.handleCheckboxGenre}/>
-          <label key={genre.name}>{genre.name}</label>
-          </div>
+            <div className="CheckboxTypeContainer" key={genre.name + genre.id}>
+              <input type="checkbox" value={genre.id} name="genre" className="Genre" key={genre.id} onClick={this.handleCheckboxGenre}/>
+              <p key={genre.name} className="CheckboxType">{genre.name}</p>
+            </div>
+
         );
       };
     } else {
@@ -84,21 +85,24 @@ class FilterMovies extends Component {
     let checkboxType = '';
     if (this.state.showType) {
       checkboxType = <div>
-        <div className="CheckboxType">
-          <input type="checkbox" name="type" value="DVD" onClick={this.handleCheckboxType}/>
-          <label>DVD</label>
+          <div className="CheckboxTypeContainer">
+            <input type="checkbox" value="DVD" name="type" className="Genre" onClick={this.handleCheckboxType}/>
+            <p className="CheckboxType">DVD</p>
+          </div>
+
+          <div className="CheckboxTypeContainer">
+            <input type="checkbox" value="Blu-Ray" name="type" className="Genre" onClick={this.handleCheckboxType}/>
+            <p className="CheckboxType">Blu-Ray</p>
+          </div>
+
+        <div className="CheckboxTypeContainer">
+          <input className="TypeItem" type="checkbox" name="type" value="Norsk iTunes" className="Genre" onClick={this.handleCheckboxType}/>
+          <p className="CheckboxType">Norsk iTunes</p>
         </div>
-        <div className="CheckboxType">
-          <input type="checkbox" name="type" value="Blu-Ray" onClick={this.handleCheckboxType}/>
-          <label>Blu-Ray</label>
-        </div>
-        <div className="CheckboxType">
-          <input type="checkbox" name="type" value="Norsk iTunes" onClick={this.handleCheckboxType}/>
-          <label>Norsk iTunes</label>
-        </div>
-        <div className="CheckboxType">
-          <input type="checkbox" name="type" value="Amerikansk iTunes" onClick={this.handleCheckboxType}/>
-          <label>Amerikansk iTunes</label>
+
+        <div className="CheckboxTypeContainer">
+          <input className="TypeItem" type="checkbox" name="type" value="Amerikansk iTunes" className="Genre" onClick={this.handleCheckboxType}/>
+          <p className="CheckboxType">Amerikansk iTunes</p>
         </div>
       </div>
     } else {

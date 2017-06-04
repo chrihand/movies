@@ -32,24 +32,48 @@ class MovieCard extends Component {
   render() {
     const movie = this.props.movie.movieInfo;
     const genres = this.state.genreList.filter(genre => movie.genre_ids.includes(genre.id)).map(g => g.name);
+    let image = "";
 
     let modal = '';
-    let backdrop_image = '';
+    let backdrop_image = {
+      backgroundImage: 'url(' + 'http://image.tmdb.org/t/p/original//1ytaxWeVHDYtb7KPkrn3GNtDJdF.jpg' + ')',
+      filter: 'grayscale(50%)',
+    };
     if (this.state.showModal === true) {
       if (movie.backdrop_path == null){
-        backdrop_image = '';
+        backdrop_image = {
+          backgroundImage:'url(' + 'http://image.tmdb.org/t/p/original//1ytaxWeVHDYtb7KPkrn3GNtDJdF.jpg' + ')',
+          filter: 'grayscale(50%)',
+        };
       } else {
-        const image = "http://image.tmdb.org/t/p/original/" + movie.backdrop_path;
-        backdrop_image = <img src={image} alt={movie.original_title} className="MovieCardBackground"/>
+        image =  'http://image.tmdb.org/t/p/original/' + movie.backdrop_path;
+        backdrop_image = {
+          backgroundColor: 'white',
+          backgroundImage: 'url(' + image + ')',
+          filter: 'opacity(30%)',
+          height: '70%',
+          width: '60%',
+          zIndex: '1',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
+          display: 'block',
+          position: 'fixed',
+          backgroundSize: 'cover',
+          boxShadow: '1px 1px 10px 1px rgba(173,168,164,0.44)',
+        };
       };
 
+      console.log(backdrop_image)
       modal =
         <div className="ModalMovieCard">
+        <div style={backdrop_image}>
+        </div>
           <div className="ModalCardContent">
             <div className="ModalCardHeader">
               <div className="ModalCardHeaderContainer">
-                <h1>{movie.original_title}</h1>
-                <h3>{movie.vote_average}/10</h3>
+                <h1>{movie.original_title}({movie.release_date.substring(0,4)})</h1>
+                <h3 className="MovieRating"><i className="fa fa-star"></i> {movie.vote_average}/10</h3>
               </div>
               <span className="ModalCardClose" onClick={this.handelModal}>x</span>
             </div>
@@ -60,14 +84,12 @@ class MovieCard extends Component {
               </div>
               <div className="ModalCardInformationContainer">
                 <div className="ModalCardItemFirst">
-                  <h3>Utgitt: {movie.release_date.substring(0,4)}</h3>
                   <h3>Hylle id: {this.props.movie.movieID}</h3>
                   <h3>Medium: {this.props.movie.type}</h3>
                 </div>
                 <p className="ModalCardItemSecond">{movie.overview}</p>
               </div>
             </div>
-              {backdrop_image}
             </div>
           </div>
         </div>

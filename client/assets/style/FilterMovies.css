@@ -6,6 +6,8 @@
 
 .FilterContainer h3 {
   cursor: pointer;
+  border-bottom: 1px solid black;
+  padding-bottom: 8px;
 }
 
 .FilterGenreTooltip {
@@ -13,5 +15,86 @@
 }
 
 .FilterTypeTooltip {
-  
+
+}
+
+.GenreItem {
+  margin-right: 10px;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  box-shadow: none;
+}
+
+.Genre {
+  -webkit-appearance: none;
+  background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
+  background: linear-gradient(to bottom, #222222 0%, #45484d 100%);
+  border-radius: 4px;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.4);
+	padding: 9px;
+	display: inline-block;
+	position: relative;
+}
+
+.Genre:active, .Genre:active {
+	box-shadow: none;
+  background: -webkit-linear-gradient(top, #ffc630 0%, #ffbf1f 100%);
+  background: linear-gradient(to bottom, #ffc630 0%, #ffbf1f 100%);
+}
+
+.Genre::after {
+  width: 9px;
+  height: 5px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border: 3px solid #fcfff4;
+  border-top: none;
+  border-right: none;
+  background: transparent;
+  opacity: 0;
+  background: -webkit-linear-gradient(top, #ffc630 0%, #ffbf1f 100%);
+  background: linear-gradient(to bottom, #ffc630 0%, #ffbf1f 100%);
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.Genre:hover::after {
+  opacity: 0.3;
+  background: -webkit-linear-gradient(top, #ffc630 0%, #ffbf1f 100%);
+  background: linear-gradient(to bottom, #ffc630 0%, #ffbf1f 100%);
+}
+
+.Genre:checked {
+  background: -webkit-linear-gradient(top, #ffc630 0%, #ffbf1f 100%);
+  background: linear-gradient(to bottom, #ffc630 0%, #ffbf1f 100%);
+	box-shadow: none;
+	color: rgba(255,191,31);
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.CheckboxTypeContainer {
+  margin-top: 10px;
+}
+
+.CheckboxType {
+  margin-bottom: 0;
+  margin-left: 30px;
+  margin-top: -26px;
+}
+
+@media (max-width: 1600px) {
+  .FilterContainer {
+    position: fixed;
+    top: 100px;
+    left: 30px;
+  }
+
+  .FilterContainer h3 {
+    cursor: pointer;
+    border-bottom: none;
+    padding-bottom: 8px;
+    content: url(../../assets/images/arrow-image.png);
+  }
 }
